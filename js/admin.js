@@ -7,8 +7,8 @@
 (function() {
     'use strict';
 
-    const ADMIN_USERNAME = 'admin';
-    const ADMIN_PASSWORD = 'kjfashion2024';
+    const ADMIN_USERNAME = 'admin@kjfashion.com';
+    const ADMIN_PASSWORD = 'primestore2026';
     const MAX_IMAGE_SIZE = 2 * 1024 * 1024; // 2MB
     const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
 
