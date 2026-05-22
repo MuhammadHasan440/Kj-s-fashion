@@ -1,0 +1,291 @@
+<!-- shop.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | KJ's Fashion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Add to ALL HTML files in <head>, after Google Fonts link -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">KJ's</span>
+                <span class="logo-sub">Fashion</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="shop.html" class="nav-link active">Shop</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="admin.html" class="nav-link nav-admin">Admin</a></li>
+            </ul>
+           
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="index.html" class="mobile-link">Home</a>
+            <a href="shop.html" class="mobile-link active">Shop</a>
+            <a href="about.html" class="mobile-link">About</a>
+            <a href="contact.html" class="mobile-link">Contact</a>
+            <a href="admin.html" class="mobile-link">Admin</a>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-bg">
+            <div class="page-header-overlay"></div>
+        </div>
+        <div class="page-header-content">
+            <span class="page-tag">Collection</span>
+            <h1>Shop All</h1>
+            <p>Discover our curated selection of luxury fashion</p>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section class="section shop-section">
+        <div class="container">
+            <div class="shop-layout">
+                <!-- Sidebar Filters -->
+                <aside class="shop-sidebar" id="shopSidebar">
+                    <div class="sidebar-header">
+                        <h3>Filters</h3>
+                        <button class="sidebar-close" id="sidebarClose" aria-label="Close filters">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Category</h4>
+                        <div class="filter-options">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="men">
+                                <span class="checkmark"></span>
+                                <span>Men's Clothing</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="women">
+                                <span class="checkmark"></span>
+                                <span>Women's Clothing</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="handbags">
+                                <span class="checkmark"></span>
+                                <span>Handbags</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="hats">
+                                <span class="checkmark"></span>
+                                <span>Hats</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="accessories">
+                                <span class="checkmark"></span>
+                                <span>Accessories</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Accessories</h4>
+                        <div class="filter-options">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="necklaces">
+                                <span class="checkmark"></span>
+                                <span>Necklaces</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="earrings">
+                                <span class="checkmark"></span>
+                                <span>Earrings</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="bracelets">
+                                <span class="checkmark"></span>
+                                <span>Bracelets</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="sets">
+                                <span class="checkmark"></span>
+                                <span>Sets</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="watches">
+                                <span class="checkmark"></span>
+                                <span>Watches</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Price Range</h4>
+                        <div class="price-range">
+                            <input type="range" min="0" max="5000" value="5000" id="priceRange">
+                            <div class="price-labels">
+                                <span>$0</span>
+                                <span id="priceValue">$5,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Products Area -->
+                <div class="shop-main">
+                    <div class="shop-toolbar">
+                        <button class="btn btn-filter" id="filterToggle">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/>
+                                <line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/>
+                                <line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/>
+                                <line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/>
+                                <line x1="17" y1="16" x2="23" y2="16"/>
+                            </svg>
+                            Filters
+                        </button>
+                        <div class="shop-sort">
+                            <select id="sortSelect">
+                                <option value="newest">Newest First</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="name">Name: A-Z</option>
+                            </select>
+                        </div>
+                        <span class="results-count" id="resultsCount">Showing all products</span>
+                    </div>
+
+                    <div class="products-grid" id="productsGrid">
+                        <!-- Skeleton loading state -->
+                        <div class="product-card skeleton">
+                            <div class="product-img skeleton-bg"></div>
+                            <div class="product-info">
+                                <div class="skeleton-line short"></div>
+                                <div class="skeleton-line"></div>
+                            </div>
+                        </div>
+                        <div class="product-card skeleton">
+                            <div class="product-img skeleton-bg"></div>
+                            <div class="product-info">
+                                <div class="skeleton-line short"></div>
+                                <div class="skeleton-line"></div>
+                            </div>
+                        </div>
+                        <div class="product-card skeleton">
+                            <div class="product-img skeleton-bg"></div>
+                            <div class="product-info">
+                                <div class="skeleton-line short"></div>
+                                <div class="skeleton-line"></div>
+                            </div>
+                        </div>
+                        <div class="product-card skeleton">
+                            <div class="product-img skeleton-bg"></div>
+                            <div class="product-info">
+                                <div class="skeleton-line short"></div>
+                                <div class="skeleton-line"></div>
+                            </div>
+                        </div>
+                        <div class="product-card skeleton">
+                            <div class="product-img skeleton-bg"></div>
+                            <div class="product-info">
+                                <div class="skeleton-line short"></div>
+                                <div class="skeleton-line"></div>
+                            </div>
+                        </div>
+                        <div class="product-card skeleton">
+                            <div class="product-img skeleton-bg"></div>
+                            <div class="product-info">
+                                <div class="skeleton-line short"></div>
+                                <div class="skeleton-line"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pagination" id="pagination">
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <span class="page-ellipsis">...</span>
+                        <button class="page-btn">Next →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Modal (Hidden by default) -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <div class="modal-body">
+                <div class="modal-gallery">
+                    <div class="modal-main-img">
+                        <div class="img-placeholder"></div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <span class="modal-category">Category</span>
+                    <h2 class="modal-title">Product Name</h2>
+                    <p class="modal-price">$0.00</p>
+                    <p class="modal-description">Product description will appear here.</p>
+                    <div class="modal-actions">
+                        <a href="#" class="btn btn-primary btn-whatsapp" id="orderBtn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                            Order on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <a href="index.html" class="footer-logo">
+                            <span class="logo-text">KJ's</span>
+                            <span class="logo-sub">Fashion</span>
+                        </a>
+                        <p>Redefining luxury fashion with timeless elegance and uncompromising quality since 2024.</p>
+                        <div class="social-links">
+                            <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
+                            <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                            <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="footer-links"><h4>Shop</h4><ul><li><a href="shop.html?cat=men">Men's Clothing</a></li><li><a href="shop.html?cat=women">Women's Clothing</a></li><li><a href="shop.html?cat=handbags">Handbags</a></li><li><a href="shop.html?cat=hats">Hats</a></li><li><a href="shop.html?cat=accessories">Accessories</a></li></ul></div>
+                    <div class="footer-links"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Careers</a></li><li><a href="#">Press</a></li></ul></div>
+                    <div class="footer-links"><h4>Support</h4><ul><li><a href="#">FAQs</a></li><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Size Guide</a></li></ul></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom"><div class="container"><p>&copy; 2024 KJ's Fashion. All rights reserved.</p><div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div></div>
+    </footer>
+
+  <script src="js/firebase.js"></script>
+<script src="js/app.js"></script>
+<script src="js/shop.js"></script>
+</body>
+</html>
