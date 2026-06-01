@@ -528,10 +528,8 @@ input, select, textarea {
 .hero-bg {
     position: absolute;
     inset: 0;
-    background: 
-        radial-gradient(ellipse at 20% 50%, rgba(30, 94, 255, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 20%, rgba(245, 233, 208, 0.03) 0%, transparent 50%),
-        var(--deep-royal);
+    background: url(/images/hero.png) no-repeat center center;
+    background-size: cover;
 }
 
 .hero-overlay {
@@ -587,10 +585,10 @@ input, select, textarea {
 
 .hero-tagline {
     font-size: clamp(0.65rem, 2vw, 0.8rem);
-    font-weight: 300;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 3px;
-    color: var(--luxury-blue);
+    color: #fff;
     margin-bottom: 1rem;
     opacity: 0;
     animation: fadeInUp 0.8s ease forwards 0.3s;
@@ -614,7 +612,7 @@ input, select, textarea {
 .hero-line.accent {
     font-style: italic;
     font-weight: 400;
-    background: linear-gradient(135deg, var(--champagne) 0%, var(--luxury-blue) 100%);
+    background: linear-gradient(135deg, var(--champagne) 100%, var(--luxury-blue) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
