@@ -2404,3 +2404,39 @@ input, select, textarea {
         padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
     }
 }
+
+
+
+/* Additional form styles */
+.btn {
+    transition: all 0.3s ease;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* Form focus effects */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #d4af7a;
+    box-shadow: 0 0 0 3px rgba(212, 175, 106, 0.1);
+    outline: none;
+}
+
+/* Success/Error border animations */
+.form-group input.valid {
+    border-color: #28a745;
+}
+
+.form-group input.error {
+    border-color: #dc3545;
+    animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
