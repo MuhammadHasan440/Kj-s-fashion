@@ -2395,6 +2395,7 @@ input, select, textarea {
     
     .cart-panel,
     .shop-sidebar {
+        margin-top: 80px;
         padding-top: max(1.5rem, env(safe-area-inset-top));
         padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
     }
