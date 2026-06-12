@@ -2906,3 +2906,27 @@ input, select, textarea {
         padding: 6px 16px;
     }
 }
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo img {
+    height: 80px; /* apni requirement ke mutabiq */
+    width: auto;
+    display: block;
+}
+
+.footer-logo {
+    display: flex;
+    text-decoration: none;
+}
+
+.footer-logo img {
+    height: 100px; /* apni requirement ke mutabiq */
+    width: auto;
+    display: block;
+}
