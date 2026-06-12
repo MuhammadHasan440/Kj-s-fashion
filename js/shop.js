@@ -268,7 +268,7 @@
                 const message = encodeURIComponent(
                     `Hi KJ's Fashion! 👋\n\nI'm interested in ordering:\n\n*Product:* ${product.name}\n*Category:* ${formatCategory(product.category)}\n*Price:* $${product.price}\n\nPlease let me know if it's available. Thank you!`
                 );
-                orderBtn.href = `https://wa.me/1234567890?text=${message}`;
+                orderBtn.href = `https://wa.me/+12424411311?text=${message}`;
                 orderBtn.target = '_blank';
             }
             
